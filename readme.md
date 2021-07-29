@@ -39,11 +39,13 @@ This is triangle quiz which is divided in 4 parts.
  
 
  ***
-## Check it out Live Here
+## Check it out Live Here [Triangle Quiz](https://trianglequiz.netlify.app/)
 
 
 ***
 ## Video
+https://user-images.githubusercontent.com/81517284/127516644-37c3e2e9-1fd0-4fd4-aa8d-ee8a5603c1ed.mp4
+
 
 ***
 <div align="center"> <h2> Connect with me 👇</h2>  
