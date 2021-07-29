@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body{
+     display: flex;
+     flex-direction:column;
+     min-height: 100vh;
+     background: #757F9A;  /* fallback for old browsers */
+     background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
+     background: linear-gradient(to right, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+     font-family: Lato;
+     overflow-x: hidden; 
+     word-spacing: 5px;
+     text-justify:inter-word;
+}
+
+header{
+     background-color: #ABA9BF;
+     text-align: center;
+     color:#34113F;
+     padding: 2rem 0;
+     border-radius: 0 0 5px 5px;
+     box-shadow: 2px 5px 2px #34113F ;
+     font-weight:bolder;
+}
+
+main{
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: stretch;
+     margin: 2rem;
+}
+
+form{
+     flex:50%;
+     padding: 2rem;
+     border:1px solid #34113F;
+     background-color: #BEB7DF;
+     color:#34113F;
+     margin:1px 0;
+     text-align: center;  
+     box-shadow: 2px 5px 3px #34113F;  
+}
+
+input{
+     margin: 10px 0 2px 0;
+     width: fit-content;
+     background-color: beige;
+     text-align: center;
+     font-weight: 900;
+     color:black;
+}
+
+button{
+     padding: 2px;
+     display: block;
+     margin: auto;
+     border-color: #34113F;
+     font-weight: 500;
+     box-shadow:2px 5px 3px #34113F;
+     display:block;
+}
+
+img{
+     vertical-align:bottom;
+     box-shadow: 1px 5px 3px black;
+}
+
+.angle,.generateangles{
+     margin:3px 0 3px 0;
+}
+
+.triangle_result,.hypotenuse_result,.area_result,.third_angle_result{
+     padding:5px 0 5px 0;
+     font-size: 22px;
+     background-color:#ABA9BF;
+     margin: 5px;
+     box-shadow: 2px 5px 6px #34113F;
+     border-radius: 3px;
+     border: 2px solid #34113F;
+     display:none;
+
+}
+
+footer{
+     text-align: center;
+}
+
