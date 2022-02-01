@@ -1,173 +1,122 @@
+const firstAngle = document.getElementById('firstAngle')
+const secondAngle = document.getElementById('secondAngle')
+const thirdAngle = document.getElementById('thirdAngle')
+const formCheckTriangleResult = document.getElementById(
+  'formCheckTriangleResult'
+)
+const triangleResult = document.querySelector('.triangle_result')
 
-// Check Triangle
-const formTriangle = document.getElementById(`formCheckTriangle`);
-const first = document.getElementById(`first`);
-const second = document.getElementById(`second`);
-const third = document.getElementById(`third`);
-const triangleResult = document.querySelector(`.triangle_result`);
-const checkTriangleButton = document.getElementById(`formCheckTriangleResult`)
+const baseAngle = document.getElementById('baseAngle')
+const perpendicularAngle = document.getElementById('perpendicularAngle')
+const hypotenuseResult = document.querySelector('.hypotenuse_result')
+const formCheckHypotenuseResult = document.getElementById(
+  'formCheckHypotenuseResult'
+)
 
+const baseArea = document.getElementById('baseArea')
+const heightArea = document.getElementById('height')
+const areaResult = document.querySelector('.area_result')
+const formCheckAreaResult = document.getElementById('formCheckAreaResult')
 
+const generateAngle = document.getElementById('generateAngle')
+const firstAngleGuess = document.getElementById('firstAngleGuess')
+const secondAngleGuess = document.getElementById('secondAngleGuess')
+const thirdAngleGuess = document.getElementById('thirdAngleGuess')
+const guessAngleResult = document.querySelector('.guess_angle_result')
+const guessResultButton = document.getElementById('guessResultButton')
 
-// Find Hypotenuse
-const formHypotenuse = document.getElementById(`formFindHypotenuse`);
-const base = document.querySelector(`.base`);
-const perpendicular = document.querySelector(`.perpendicular`);
-const hypotenuseResultButton = document.getElementById(`formFindHypotenuseResult`);
-const hypotenuseResult = document.querySelector(`.hypotenuse_result`);
+// Guess Angle
 
+guessResultButton.addEventListener('click', () => {
+  let firstAngle = Number(firstAngleGuess.childNodes[0].nodeValue)
+  let secondAngle = Number(secondAngleGuess.childNodes[0].nodeValue)
+  let thirdAngle = Number(thirdAngleGuess.value)
 
+  let triangle = firstAngle + secondAngle + thirdAngle
 
-//  Area of triangle
-const formArea = document.getElementById(`formFindArea`);
-const baseArea = document.querySelector(`.baseArea`);
-const heightArea = document.querySelector(`.heightArea`);
-const areaResultButton = document.getElementById(`formFindAreaResult`);
-const areaResult = document.querySelector(`.area_result`);
-
-
-
-
-// Guess Third Angle
-const firstAngle = document.getElementById(`firstAngle`);
-const secondAngle = document.getElementById(`secondAngle`);
-const thirdAngle = document.getElementById(`thirdAngle`);
-const guessButton = document.getElementById(`guessResultButton`);
-const guessResult = document.querySelector(`.third_angle_result`);
-const formGuess = document.getElementById(`guessThirdAngle`);
-const generateAngles = document.querySelector(`.generateangles`);
-
-
-
-
-// To Check the sum of triangle
-formTriangle.addEventListener(`submit`, (e) => {
-     e.preventDefault();
-     checkTriangle(first, second, third);
-});
-
-
-// Find Hypotenuse
-formHypotenuse.addEventListener(`submit`, (e) => {
-     e.preventDefault();
-     findHypotenuse(base, perpendicular);
+  if(triangle === 180){
+    guessAngleResult.style.display = 'block'
+    guessAngleResult.innerHTML = `<h1>Congrats! You have correctly guessed the angles!</h1>`
+  }else{
+    guessAngleResult.style.display = 'block'
+    guessAngleResult.style.color = 'red'
+    guessAngleResult.innerHTML = `<h1>Sorry, you have not correctly guessed the angles!</h1>`
+  }
 })
 
+//  Check Area
+formCheckAreaResult.addEventListener('click', () => {
+  const base = Number(baseArea.value)
+  const height = Number(heightArea.value)
+  const triangleArea = (base * height) / 2
 
-// Find Area
-formArea.addEventListener(`submit`, (e) => {
-     e.preventDefault();
-     findArea(baseArea, heightArea);
+  if (base === 0 || height === 0) {
+    validInput(areaResult)
+  } else {
+    areaResult.style.display = 'block'
+    areaResult.innerHTML = `<h1>The area of the triangle is ${triangleArea}</h1>`
+  }
 })
 
+//  Hypotenuse
+formCheckHypotenuseResult.addEventListener('click', () => {
+  let base = baseAngle.value
+  let perpendicular = perpendicularAngle.value
+  let hypotenuse = Math.sqrt(
+    Math.pow(base, 2) + Math.pow(perpendicular, 2)
+  ).toFixed(2)
 
-//  Guess Right Angle
-formGuess.addEventListener(`submit`, (e) => {
-     e.preventDefault();
-     guessAngle();
+  if (base === '' || perpendicular === '') {
+    validInput(hypotenuseResult)
+  } else {
+    hypotenuseResult.style.display = 'block'
+    hypotenuseResult.innerHTML = `<h1>Hypotenuse of the given Triangle is ${hypotenuse}<h1>`
+  }
 })
 
+// is it Triangle?
+formCheckTriangleResult.addEventListener('click', () => {
+  let firstAngleValue = Number(firstAngle.value)
+  let secondAngleValue = Number(secondAngle.value)
+  let thirdAngleValue = Number(thirdAngle.value)
 
+  let triangle = firstAngleValue + secondAngleValue + thirdAngleValue
+  if (triangle === 0) {
+    validInput(triangleResult)
+  } else if (triangle === 180) {
+    triangleResult.style.display = 'block'
+    triangleResult.innerHTML = `<h1>This is a Triangle</h1>`
+  } else {
+    triangleResult.style.display = 'block'
+    triangleResult.style.color = 'red'
+    triangleResult.innerHTML = `<h1>This is not a Triangle</h1>`
+  }
+})
 
-
-
-
-
-
-
-// Functions
-
-
-// To Check the sum of triangle
-checkTriangle = (firstangle, secondangle, thirdangle) => {
-
-     let x = Number(firstangle.value);
-     let y = Number(secondangle.value);
-     let z = Number(thirdangle.value);
-     let sum = x + y + z;
-
-     if (sum === 180) {
-          checkTriangleButton.style.display = "none";
-          triangleResult.style.display = "block";
-          triangleResult.innerHTML = `<h3>Yes, It is Triangle.</h3>`;
-     }
-
-     else {
-          checkTriangleButton.style.display = "none";
-          triangleResult.style.display = "block";
-          triangleResult.innerHTML = `<h3>No, It is not Triangle. Your sum is: ${sum}.</h3>`
-
-     }
-
+// Error Message
+function validInput(output) {
+  output.style.display = 'block'
+  output.style.color = 'red'
+  output.innerHTML = `<h1>Please enter a valid input</h1>`
 }
 
+// Generate Angle
+generateAngle.addEventListener('click', () => {
+  let x = Math.floor(Math.random() * (180 - 0) + 0)
+  let y = Math.floor(Math.random() * (180 - 0) + 0)
 
-// Find Hypotenuse
-findHypotenuse = (baseAngle, perpendicularAngle) => {
-     let b = Number(baseAngle.value);
-     let bsquare = Number(Math.pow(b, 2));
-     let p = Number(perpendicularAngle.value);
-     let psquare = Number(Math.pow(p, 2));
-     let h = (Math.sqrt(psquare + bsquare)).toFixed(2);
+  while (1) {
+    if (x + y >= 180) {
+      if (x > y) {
+        x = Math.floor(Math.random() * (180 - 0) + 0)
+      } else {
+        y = Math.floor(Math.random() * (180 - 0) + 0)
+      }
+    } else {
+      break
+    }
+  }
 
-     hypotenuseResultButton.style.display = "none";
-     hypotenuseResult.style.display = "block"
-     hypotenuseResult.innerHTML = `<h3>Hypotenuse is: ${h}</h3>`
-}
-
-// Find Area
-findArea = (base, height) => {
-     let b = Number(base.value);
-     let h = Number(height.value);
-     let area = Number(((b * h) / 2).toFixed(2));
-
-     areaResultButton.style.display = "none";
-     areaResult.style.display = "block";
-     areaResult.innerHTML = `<h3>Area is: ${area}</h3>`;
-}
-
-// Generate Angles
-function generateAngle() {
-     let x = Math.floor(Math.random() * (180 - 0) + 0);
-     let y = Math.floor(Math.random() * (180 - 0) + 0);
-
-     while (1) {
-          if (x + y >= 180) {
-               if (x > y) {
-                    x = Math.floor(Math.random() * (180 - 0) + 0);
-               }
-               else {
-                    y = Math.floor(Math.random() * (180 - 0) + 0);
-
-               }
-          } else {
-               break;
-          }
-     }
-     firstAngle.innerText = x;
-     secondAngle.innerText = y;
-}
-
-//  Guess Angle
-function guessAngle() {
-     let x = Number(firstAngle.innerText);
-     let y = Number(secondAngle.innerText);
-     let z = Number(thirdAngle.value);
-     if ((x + y + z) === 180) {
-
-          guessButton.style.display = "none";
-          guessResult.style.display = "block";
-          generateAngles.style.display = "none";
-          guessResult.innerHTML = `Yes, It is right Answer`;
-
-
-
-
-     } else {
-          guessButton.style.display = "none";
-          guessResult.style.display = "block";
-          generateAngles.style.display = "none";
-          guessResult.innerHTML = `Sorry, It is wrong Answer`;
-     }
-
-}
+  firstAngleGuess.innerHTML = `${x}`
+  secondAngleGuess.innerHTML = `${y}`
+})

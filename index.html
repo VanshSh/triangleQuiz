@@ -1,111 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <script defer src="./app.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Learn Traingle</title>
+  </head>
+  <body>
+    <header>
+      <img
+        class="header-img"
+        src="./images/traingles.jpg"
+        alt="Learn Triangles"
+      />
+      <h1>Learn Triangles</h1>
+    </header>
 
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="./style.css">
-     <title>Triangles Quiz</title>
-</head>
+    <section class="links">
+      <a href="https://github.com/VanshSh/triangleQuiz">GitHub Code</a>
+      <a href="#">Portfolio</a>
+    </section>
 
-<body>
+    <main>
+      <!-- IsTriangle -->
 
-     <header>
-          <h2>
-               Triangles Quiz <img src="https://img.icons8.com/doodle/48/000000/trigonometry.png" />
-          </h2>
-     </header>
+      <div class="triangle">
+        <h2>is it Triangle ?</h2>
 
-     <main>
+        <input
+          type="number"
+          id="firstAngle"
+          placeholder="First Angle"
+          min="1"
+          required
+        />
+        <input
+          type="number"
+          id="secondAngle"
+          placeholder="Second Angle"
+          min="1"
+          required
+        />
+        <input
+          type="number"
+          id="thirdAngle"
+          placeholder="Third Angle"
+          min="1"
+          required
+        />
 
-          <!-- To check Triangle -->
-          <form id="formCheckTriangle">
-               <section>
-                    <h2>is it Triangle ? <img src="https://img.icons8.com/nolan/48/triangle-stroked.png" /></h2>
+        <div class="triangle_result"></div>
 
-                    <input type="number" id="first" placeholder="First Angle" min="1" required />
-                    <input type="number" id="second" placeholder="Second Angle" min="1" required />
-                    <input type="number" id="third" placeholder="Third Angle" min="1" required />
+        <button id="formCheckTriangleResult">Result</button>
+      </div>
 
-                    <div class="triangle_result">
+      <!-- FInd Hypotenuse -->
 
-                    </div>
+      <div class="hypotenuse">
+        <h2>Find Hypotenuse</h2>
 
-                    <button type="submit" id="formCheckTriangleResult">Check</button>
-          </form>
+        <input
+          type="number"
+          required
+          min="1"
+          placeholder="Base"
+          id="baseAngle"
+        />
+        <input
+          type="number"
+          required
+          min="1"
+          id="perpendicularAngle"
+          placeholder="Perpendicular"
+        />
 
-          </section>
+        <div class="hypotenuse_result"></div>
 
-          <!-- To Find Out Hypotenus -->
-          <form id="formFindHypotenuse">
-               <section class="hypotenuse">
-                    <h2>Find Hypotenuse <img src="https://img.icons8.com/office/48/000000/trigonometry.png" /> </h2>
+        <button id="formCheckHypotenuseResult">Hypotenuse</button>
+      </div>
 
-                    <input type="number" class="base" required min="1" placeholder="Base" />
-                    <input type="number" class="perpendicular" required min="1" placeholder="Perpendicular" />
+      <!-- Find Area -->
 
-                    <div class="hypotenuse_result">
+      <div class="area">
+        <h2>Find Area of Triangle</h2>
 
-                    </div>
+        <input
+          type="number"
+          required
+          min="1"
+          id="baseArea"
+          placeholder="Base"
+        />
+        <input
+          type="number"
+          required
+          min="1"
+          placeholder="Height"
+          id="height"
+        />
 
-                    <button type="submit" id="formFindHypotenuseResult">Hypotenuse</button>
-               </section>
-          </form>
+        <div class="area_result"></div>
 
+        <button type="submit" id="formCheckAreaResult">Find Area</button>
+      </div>
 
-          <!-- To Find area of triangle -->
-          <form id="formFindArea">
-               <section class="area">
-                    <h2>Find Area of Triangle <img src="https://img.icons8.com/office/48/000000/triangle-stroked.png" />
-                    </h2>
+      <!-- Guess third angle -->
 
-                    <input type="number" class="baseArea" required min="1" placeholder="Base" />
-                    <input type="number" class="heightArea" required min="1" placeholder="Height">
+      <div class="guessAngle">
+        <h2>Guess the third angle to form triangle</h2>
 
-                    <div class="area_result">
+        <button id="generateAngle" class="generateangles">
+          Generate Angles
+        </button>
 
-                    </div>
+        <h2 class="angle">First Angle: <span id="firstAngleGuess"></span></h2>
 
-                    <button type="submit" id="formFindAreaResult">Find Area</button>
+        <h2 class="angle">Second Angle: <span id="secondAngleGuess"></span></h2>
 
-               </section>
-          </form>
+        <input
+          type="number"
+          id="thirdAngleGuess"
+          placeholder="Guess Third Angle"
+          required
+        />
 
+        <div class="guess_angle_result"></div>
 
-
-          <!-- Guess the third angle -->
-          <form id="guessThirdAngle">
-               <section class="thirdangle">
-                    <h2>Guess the third angle to form triangle <img
-                              src="https://img.icons8.com/plumpy/48/000000/triangle-stroked.png" /></h2>
-
-                    <button onclick="generateAngle()" class="generateangles">Generate Angles</button>
-
-
-                    <h2 class="angle">First Angle: <span id="firstAngle"></span></h2>
-
-                    <h2 class="angle">Second Angle: <span id="secondAngle"></span></h2>
-
-                    <input type="number" id="thirdAngle" placeholder="Guess Third Angle" required>
-
-                    <div class="third_angle_result">
-
-                    </div>
-
-                    <button type="submit" onclick="guessAngle()" id="guessResultButton">Check</button>
-
-               </section>
-          </form>
-     </main>
-
-     <footer>
-          <h3> Made by: <a href="https://vanshsharma.netlify.app/">Vansh Sharma</a></h3>
-     </footer>
-
-     <script src="./app.js"></script>
-
-
-</body>
-
+        <button id="guessResultButton">Check</button>
+      </div>
+    </main>
+    <section class="links">
+      <a class="triangleQuiz" href="./triangle.html">Go To Triangle Quiz</a>
+    </section>
+  </body>
 </html>
